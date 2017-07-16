@@ -1,3 +1,5 @@
+package com.example.tests;
+
 import io.qameta.allure.Description;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
@@ -11,42 +13,61 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assumptions.assumeTrue;
 
-@Epic("Main epic")
-@Feature("Фича")
+
 @Slf4j
-@Tag("main")
+@Feature("Sample feature")
+@Story("Sample story over class")
 public class MainTest {
 
-    /**
-     * Javadoc
-     */
     @Test
-    @Story("story method")
-    @Description(useJavaDoc = true)
+    @DisplayName("Failed test")
     public void failedTest() {
         assertTrue(false);
     }
 
     @Test
-    @Disabled
+    @DisplayName("Ignore test")
     public void ignoreTest() {
         assertTrue(false);
     }
 
     @Test
-    @DisplayName("display name")
-    @Description("описание без жавадока")
+    @DisplayName("Assume test")
     public void assumeTest() {
-        assumeTrue(false, "bcs i can");
+        assumeTrue(false);
     }
 
     @Test
+    @DisplayName("Good test")
     public void simpleTest() {
         log.info("Yeah!");
     }
 
     @Test
+    @DisplayName("Error test")
     public void errorTest() {
         throw new Error("Error");
     }
+
+    /**
+     * Javadoc
+     */
+    @Test
+    @DisplayName("JavaDoc test")
+    @Description(useJavaDoc = true)
+    public void javaDocDescriptionTest() {
+    }
+
+    @Test
+    @DisplayName("Simple description")
+    @Description("Simple description and more..")
+    public void descriptionTest() {
+    }
+
+    @Test
+    @Story("Simple story")
+    @DisplayName("Story test")
+    public void storyTest() {
+    }
 }
+
