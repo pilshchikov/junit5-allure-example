@@ -1,4 +1,5 @@
 import io.qameta.allure.Description;
+import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
 import lombok.extern.slf4j.Slf4j;
@@ -10,8 +11,8 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assumptions.assumeTrue;
 
+@Epic("Main epic")
 @Feature("Фича")
-@Story("Стори")
 @Slf4j
 @Tag("main")
 public class MainTest {
@@ -20,6 +21,7 @@ public class MainTest {
      * Javadoc
      */
     @Test
+    @Story("story method")
     @Description(useJavaDoc = true)
     public void failedTest() {
         assertTrue(false);
