@@ -17,6 +17,7 @@ import static org.junit.jupiter.api.Assumptions.assumeTrue;
 @Slf4j
 @Feature("Sample feature")
 @Story("Sample story over class")
+@Tag("main")
 public class MainTest {
 
     @Test

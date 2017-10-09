@@ -10,16 +10,16 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <allure.version>2.0-BETA15</allure.version>
-        <allure.maven.version>2.8</allure.maven.version>
-        <aspectj.version>1.8.9</aspectj.version>
-        <compiler.version>1.7</compiler.version>
+        <allure.version>2.0-BETA19</allure.version>
+        <allure.maven.version>2.9</allure.maven.version>
+        <aspectj.version>1.8.11</aspectj.version>
         <slf4j.version>1.7.24</slf4j.version>
         <logback.version>1.2.1</logback.version>
-        <maven-compiler-plugin.version>3.6.0</maven-compiler-plugin.version>
-        <junit.jupiter.version>5.0.0-M4</junit.jupiter.version>
-        <junit.vintage.version>4.12.0-M4</junit.vintage.version>
-        <junit.platform.version>1.0.0-M4</junit.platform.version>
+        <maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
+        <junit.jupiter.version>5.0.1</junit.jupiter.version>
+        <junit.vintage.version>4.12.1</junit.vintage.version>
+        <junit.platform.version>1.0.1</junit.platform.version>
+        <surfire.version>2.19.1</surfire.version>
     </properties>
 
     <dependencies>
@@ -95,23 +95,24 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.19.1</version>
+                <version>${surfire.version}</version>
                 <configuration>
                     <argLine>
-                        -javaagent:${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar
+                        -Xmx1024m -javaagent:${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar
                     </argLine>
+                    <includes>
+                        <include>**/*.java</include>
+                    </includes>
                     <properties>
                         <includeTag>main</includeTag>
                     </properties>
-                    <threadCountMethods>3</threadCountMethods>
+                    <threadCountMethods>10</threadCountMethods>
                     <perCoreThreadCount>false</perCoreThreadCount>
                     <useUnlimitedThreads>true</useUnlimitedThreads>
                     <reuseForks>true</reuseForks>
                     <parallel>all</parallel>
                     <systemProperties>
-                        <allure.results.directory>
-                            ${project.build.directory}/allure-results
-                        </allure.results.directory>
+                        <allure.results.directory>target/allure-results</allure.results.directory>
                     </systemProperties>
                 </configuration>
                 <dependencies>
@@ -122,7 +123,7 @@
                     </dependency>
                     <dependency>
                         <groupId>org.aspectj</groupId>
-                        <artifactId>aspectjweaver</artifactId>
+                            <artifactId>aspectjweaver</artifactId>
                         <version>${aspectj.version}</version>
                     </dependency>
                 </dependencies>

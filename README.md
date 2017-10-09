@@ -1,0 +1,1 @@
+# Allure 2 tests examples with Maven, JUnit 5
