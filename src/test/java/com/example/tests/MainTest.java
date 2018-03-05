@@ -56,6 +56,7 @@ public class MainTest {
     @Test
     @DisplayName("JavaDoc test")
     @Description(useJavaDoc = true)
+    @Tag("Iter")
     public void javaDocDescriptionTest() {
     }
 
